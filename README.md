@@ -96,7 +96,7 @@ To run this project locally, follow these steps:
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/cityx-crime-analysis.git
+git clone https://github.com/a7jry/rihal-codestacker-ml.git
 
 # Navigate to the project directory
 cd cityx-crime-analysis
@@ -183,14 +183,67 @@ The project can automatically extract information from PDF police reports. This 
 
 ## **Deployment**
 
-### Dockerization:
-- Containerized the entire application using Docker for easier deployment and scalability.
+# Project Setup and Dockerization
 
-### Cloud Deployment:
-- Deployed the project on **Heroku** (or any cloud service).
-- Accessible at: `https://your-deployed-app.herokuapp.com/`
+This project is containerized using Docker for easy deployment and scalability. It includes both a Jupyter Notebook environment and a Flask web application, which can be run independently or together using Docker Compose.
 
----
+## Prerequisites
+Make sure Docker and Docker Compose are installed on your system.
+
+- [Install Docker](https://docs.docker.com/get-docker/)
+- [Install Docker Compose](https://docs.docker.com/compose/install/)
+
+## Building and Running the Jupyter Notebook
+
+To build and run the Jupyter Notebook container:
+
+1. **Build the Docker image for Jupyter Notebook:**
+   ```bash
+   docker build -f Dockerfile.jupyter -t my-jupyter .
+   ```
+
+2. **Run the container:**
+   ```bash
+   docker run -p 8888:8888 my-jupyter
+   ```
+
+3. **Access Jupyter Notebook in your browser:**
+   Open [http://127.0.0.1:8888/lab](http://127.0.0.1:8888/lab) to access the Jupyter Lab environment.
+
+## Building and Running the Flask Application
+
+To build and run the Flask web application container:
+
+1. **Build the Docker image for Flask app:**
+   ```bash
+   docker build -f Dockerfile.app -t my-flask-app .
+   ```
+
+2. **Run the container:**
+   ```bash
+   docker run -p 5000:5000 my-flask-app
+   ```
+
+3. **Access the Flask app in your browser:**
+   Open [http://127.0.0.1:5000/](http://127.0.0.1:5000/) to access the Flask web application.
+
+## Building and Running Both Containers with Docker Compose
+
+To build and run both the Jupyter Notebook and Flask app containers simultaneously:
+
+1. **Start both containers using Docker Compose:**
+   ```bash
+   docker-compose up
+   ```
+
+2. **Access the Jupyter Notebook at:**
+   [http://127.0.0.1:8888/lab](http://127.0.0.1:8888/lab)
+
+3. **Access the Flask app at:**
+   [http://127.0.0.1:5000/](http://127.0.0.1:5000/)
+
+Note:
+You may encounter some unexpected behavior when running the Flask app through the Docker container. For testing purposes and to ensure everything functions correctly, it is recommended to run the app.py file directly from the app folder.
 
 ## **License**
 
